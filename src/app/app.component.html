@@ -21,7 +21,9 @@
         mat-icon-button
         (click)="drawer.toggle()"
       >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon aria-label="Side nav toggle icon">
+          {{ drawer.opened ? "close" : "menu" }}
+        </mat-icon>
       </button>
       <span>Dashboard</span>
       <span class="spacer"></span>
