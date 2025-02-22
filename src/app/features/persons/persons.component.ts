@@ -28,7 +28,6 @@ export class PersonsComponent implements OnInit {
 
   displayedColumns = ['firstname', 'lastname', 'email', 'phone', 'website'];
 
-  // Signals
   persons = this.personService.persons;
   searchTerm = signal('');
   currentPage = signal(0);
@@ -36,7 +35,6 @@ export class PersonsComponent implements OnInit {
   sortColumn = signal('');
   sortDirection = signal<'asc' | 'desc'>('asc');
 
-  // Computed values
   filteredPersons = computed(() => {
     const search = this.searchTerm().toLowerCase();
     return this.persons().filter(
@@ -50,7 +48,6 @@ export class PersonsComponent implements OnInit {
   displayedPersons = computed(() => {
     let sorted = [...this.filteredPersons()];
 
-    // Apply sorting
     if (this.sortColumn()) {
       sorted.sort((a, b) => {
         const columnKey = this.sortColumn() as keyof Person;
@@ -59,7 +56,6 @@ export class PersonsComponent implements OnInit {
       });
     }
 
-    // Apply pagination
     const startIndex = this.currentPage() * this.pageSize();
     return sorted.slice(startIndex, startIndex + this.pageSize());
   });
