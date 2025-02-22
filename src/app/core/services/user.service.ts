@@ -1,7 +1,10 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+
+import { catchError, Observable, tap } from 'rxjs';
+
 import { User } from '../../shared/models/user.model';
+import { NotificationService } from './snackbar.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,9 +12,10 @@ import { User } from '../../shared/models/user.model';
 export class UserService {
   private readonly API_URL = 'https://reqres.in/api/users';
 
-  users = signal<User[]>([]);
+  private readonly notificationService = inject(NotificationService);
+  private readonly http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
+  users = signal<User[]>([]);
 
   getUsers(): Observable<any> {
     return this.http
@@ -20,21 +24,50 @@ export class UserService {
   }
 
   createUser(user: User): Observable<User> {
-    return this.http
-      .post<User>(this.API_URL, user)
-      .pipe(
-        tap((newUser) => this.users.update((users) => [...users, newUser]))
-      );
+    return this.http.post<User>(this.API_URL, user).pipe(
+      tap((newUser) => {
+        this.users.update((users) => [...users, newUser]);
+        this.notificationService.success(
+          `User ${newUser.first_name ?? ''} ${
+            newUser.last_name ?? ''
+          } was successfully created`
+        );
+      }),
+      catchError((error) => {
+        this.notificationService.error('Failed to create user');
+        throw error;
+      })
+    );
   }
 
   updateUser(user: Partial<User> & { id: number }): Observable<User> {
     return this.http.patch<User>(`${this.API_URL}/${user.id}`, user).pipe(
       tap((updatedUser) => {
+        let previousUser: User | undefined;
+
         this.users.update((users) =>
-          users.map((u) =>
-            u.id === updatedUser.id ? { ...u, ...updatedUser } : u
-          )
+          users.map((u) => {
+            if (u.id === updatedUser.id) {
+              previousUser = u;
+              return { ...u, ...updatedUser };
+            }
+            return u;
+          })
         );
+
+        if (previousUser) {
+          this.notificationService.success(
+            `User ${previousUser.first_name ?? ''} ${
+              previousUser.last_name ?? ''
+            } was successfully updated`
+          );
+        } else {
+          this.notificationService.success(`User was successfully updated`);
+        }
+      }),
+      catchError((error) => {
+        this.notificationService.error('Failed to update user');
+        throw error;
       })
     );
   }
@@ -42,7 +75,25 @@ export class UserService {
   deleteUser(id: number): Observable<void> {
     return this.http.delete<void>(`${this.API_URL}/${id}`).pipe(
       tap(() => {
-        this.users.update((users) => users.filter((u) => u.id !== id));
+        let deletedUser: User | undefined;
+        this.users.update((users) => {
+          deletedUser = users.find((u) => u.id === id);
+          return users.filter((u) => u.id !== id);
+        });
+
+        if (deletedUser) {
+          this.notificationService.success(
+            `User ${deletedUser.first_name ?? ''} ${
+              deletedUser.last_name ?? ''
+            } was successfully deleted`
+          );
+        } else {
+          this.notificationService.success(`User was successfully deleted`);
+        }
+      }),
+      catchError((error) => {
+        this.notificationService.error('Failed to delete user');
+        throw error;
       })
     );
   }
