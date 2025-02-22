@@ -1,4 +1,3 @@
-// shared/components/confirm-dialog/confirm-dialog.component.ts
 import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
