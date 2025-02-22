@@ -11,18 +11,36 @@ export class NotificationService {
   success(message: string): void {
     this.snackBar.open(message, 'Close', {
       duration: 3000,
-      horizontalPosition: 'end',
+      horizontalPosition: 'right',
       verticalPosition: 'top',
-      panelClass: ['success-snackbar'],
+      panelClass: ['snackbar', 'success-snackbar'],
     });
   }
 
   error(message: string): void {
     this.snackBar.open(message, 'Close', {
       duration: 5000,
-      horizontalPosition: 'end',
+      horizontalPosition: 'right',
       verticalPosition: 'top',
-      panelClass: ['error-snackbar'],
+      panelClass: ['snackbar', 'snackbar-error'],
+    });
+  }
+
+  warn(message: string): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 4000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: ['snackbar', 'snackbar-warning'],
+    });
+  }
+
+  info(message: string): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: ['snackbar', 'snackbar-info'],
     });
   }
 }
