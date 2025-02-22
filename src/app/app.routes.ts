@@ -1,4 +1,6 @@
+// app.routes.ts
 import { Routes } from '@angular/router';
+
 import { authGuard } from './core/guards';
 
 export const routes: Routes = [
@@ -47,5 +49,16 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
     ],
+  },
+  {
+    path: 'not-found',
+    loadComponent: () =>
+      import('./shared/components/not-found/not-found.component').then(
+        (m) => m.NotFoundComponent
+      ),
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found',
   },
 ];
