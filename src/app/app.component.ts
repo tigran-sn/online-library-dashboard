@@ -1,4 +1,3 @@
-// app.component.ts
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
@@ -26,7 +25,7 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  private authService = inject(AuthService);
+  protected authService = inject(AuthService);
 
   logout(): void {
     this.authService.logout();
