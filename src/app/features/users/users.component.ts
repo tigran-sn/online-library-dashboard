@@ -8,6 +8,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import { UserService } from '../../core/services/user.service';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
+import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 import { User } from '../../shared/models/user.model';
 
 @Component({
@@ -60,7 +61,19 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  deleteUser(id: number): void {
-    this.userService.deleteUser(id).subscribe();
+  deleteUser(user: User): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+      data: {
+        title: 'Confirm Delete',
+        message: `Are you sure you want to delete user ${user.first_name} ${user.last_name}?`,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.userService.deleteUser(user.id!).subscribe();
+      }
+    });
   }
 }
