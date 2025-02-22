@@ -1,0 +1,76 @@
+<div class="dashboard-container">
+  <h1>Dashboard</h1>
+
+  <div class="stats-grid">
+    <mat-card class="stats-card">
+      <mat-card-content>
+        <div class="stat-item">
+          <div class="stat-icon">
+            <mat-icon>people</mat-icon>
+          </div>
+          <div class="stat-details">
+            <h3>Total Users</h3>
+            <p class="stat-value">{{ totalUsers() }}</p>
+            <p class="stat-description">Active users in the system</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stats-card">
+      <mat-card-content>
+        <div class="stat-item">
+          <div class="stat-icon">
+            <mat-icon>library_books</mat-icon>
+          </div>
+          <div class="stat-details">
+            <h3>Total Products</h3>
+            <p class="stat-value">{{ totalProducts() }}</p>
+            <p class="stat-description">Books and products available</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stats-card">
+      <mat-card-content>
+        <div class="stat-item">
+          <div class="stat-icon">
+            <mat-icon>person</mat-icon>
+          </div>
+          <div class="stat-details">
+            <h3>Total Persons</h3>
+            <p class="stat-value">{{ totalPersons() }}</p>
+            <p class="stat-description">Registered individuals</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="quick-stats">
+    <mat-card>
+      <mat-card-content>
+        <h2>System Overview</h2>
+        <div class="overview-grid">
+          <div class="overview-item">
+            <span class="label">Active Sessions</span>
+            <span class="value">{{ activeSessions() }}</span>
+          </div>
+          <div class="overview-item">
+            <span class="label">Recent Activities</span>
+            <span class="value">{{ recentActivities() }}</span>
+          </div>
+          <div class="overview-item">
+            <span class="label">New Users (Today)</span>
+            <span class="value">{{ newUsersToday() }}</span>
+          </div>
+          <div class="overview-item">
+            <span class="label">System Status</span>
+            <span class="value status-active">Active</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

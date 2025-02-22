@@ -1,0 +1,32 @@
+.persons-container {
+  padding: 2rem;
+
+  .actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    mat-form-field {
+      width: 300px;
+    }
+  }
+
+  table {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    .mat-cell {
+      padding: 8px 16px;
+    }
+
+    a {
+      color: #1976d2;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

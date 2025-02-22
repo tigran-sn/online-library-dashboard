@@ -1,59 +1,73 @@
-# OnlineLibrary
+# **Online **Library **Admin** Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+## **Description**
 
-## Development server
+**A** modern admin application **for** an online library built **with**Angular**19**, featuring user management**,** product**/**book management**,** and person management capabilities**.**
 
-To start a local development server, run:
+## **Features**
 
-```bash
-ng serve
-```
+**-**Authentication system
+**-**Responsive dashboard **with** key statistics
+**-**User management **with**CRUD operations
+**-**Products**/**Books display **with** sorting and pagination
+**-**Persons management **with** search and filtering capabilities
+**-**Material**Design**UI components
+**-**Standalone components architecture
+**-**Signal**-**based state management
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## **Prerequisites**
 
-## Code scaffolding
+**-**Node**.**js**(**v18 or higher**)**
+**-**npm**(**v9 or higher**)**
+**-**Angular**CLI**(v19**)**
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## **Installation**
 
-```bash
-ng generate component component-name
-```
+**1.**Clone the repository**:**
+**`**`**`**bash git clone https://github.com/yourusername/online-library-admin.git **`**`**`**
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+**2.**Navigate to the project directory**:**
+**`**`**`**bash cd online-library-admin **`**`**`**
 
-```bash
-ng generate --help
-```
+**3.**Install dependencies**:**
+**`**`**`**bash npm install **`**`**`**
 
-## Building
+**4.**Start the development server**:**
+**`**`**`**bash ng serve **`**`**`**
 
-To build the project run:
+**5.**Open your browser and navigate to**:**
+**`**`**`** http://localhost:4200 **`**`**`**
 
-```bash
-ng build
-```
+## **Project**Structure
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+**-**`**/src/app/core**`**:**Core**functionality**(services**,** guards**,** interceptors**)**
+**-**`**/src/app/features**`**:**Feature**modules**(auth**,** dashboard**,** users**,** products**,** persons**)**
+**-**`**/src/app/shared**`**:**Shared components**,** models**,** and utilities
 
-## Running unit tests
+## **API**Integration
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+**The** application integrates **with** the following **APIs**:
+**-**ReqRes**API**for authentication and user management
+**-**Faker**API**for products and persons data
 
-```bash
-ng test
-```
+## **Best**Practices
 
-## Running end-to-end tests
+**-**Standalone components architecture
+**-**Signal**-**based state management
+**-**Lazy loading **for** optimized **performance**
+**-**Responsive design
+**-**Clean code principles
+**-**Component**-**based architecture
+**-**Type safety **with**TypeScript
 
-For end-to-end (e2e) testing, run:
+## **Contributing**
 
-```bash
-ng e2e
-```
+**1.**Fork the repository
+**2.**Create your feature branch
+**3.**Commit your changes
+**4.**Push to the branch
+**5.**Create a **new**Pull**Request**
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## **License**
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**This** project **is** licensed under the **MIT**License**.**
