@@ -57,36 +57,6 @@
       }
     }
   }
-
-  .quick-stats {
-    .overview-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 1rem;
-
-      .overview-item {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-
-        .label {
-          color: rgba(0, 0, 0, 0.6);
-          font-size: 0.9rem;
-        }
-
-        .value {
-          font-size: 1.5rem;
-          font-weight: 500;
-          color: #2c3e50;
-
-          &.status-active {
-            color: #4caf50;
-          }
-        }
-      }
-    }
-  }
 }
 
 @media (max-width: 768px) {
@@ -95,10 +65,6 @@
 
     .stats-grid {
       grid-template-columns: 1fr;
-    }
-
-    .quick-stats .overview-grid {
-      grid-template-columns: repeat(2, 1fr);
     }
   }
 }
