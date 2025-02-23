@@ -24,7 +24,7 @@ import { Person } from '../../shared/models/person.model';
   styleUrl: './persons.component.scss',
 })
 export class PersonsComponent implements OnInit {
-  private personService = inject(PersonService);
+  private readonly personService = inject(PersonService);
 
   displayedColumns = ['firstname', 'lastname', 'email', 'phone', 'website'];
 

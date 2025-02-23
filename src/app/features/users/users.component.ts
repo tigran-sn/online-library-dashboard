@@ -24,8 +24,8 @@ import { User } from '../../shared/models/user.model';
   styleUrl: './users.component.scss',
 })
 export class UsersComponent implements OnInit {
-  private userService = inject(UserService);
-  private dialog = inject(MatDialog);
+  private readonly userService = inject(UserService);
+  private readonly dialog = inject(MatDialog);
 
   users = this.userService.users;
   displayedColumns: string[] = [

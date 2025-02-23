@@ -22,7 +22,7 @@ import { Product } from '../../shared/models/product.model';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent implements OnInit {
-  private productService = inject(ProductService);
+  private readonly productService = inject(ProductService);
 
   products = this.productService.products;
   displayedProducts = this.productService.displayedProducts;
