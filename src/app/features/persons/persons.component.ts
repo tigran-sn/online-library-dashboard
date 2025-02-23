@@ -36,7 +36,7 @@ export class PersonsComponent implements OnInit {
   sortDirection = signal<'asc' | 'desc'>('asc');
 
   filteredPersons = computed(() => {
-    const search = this.searchTerm().toLowerCase();
+    const search = this.searchTerm().toLowerCase().trim();
     return this.persons().filter(
       (person) =>
         person.email.toLowerCase().includes(search) ||
