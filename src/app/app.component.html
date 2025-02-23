@@ -8,6 +8,7 @@
     fixedInViewport
     [attr.role]="'navigation'"
     [mode]="'side'"
+    opened="true"
   >
     <mat-toolbar>Library Admin</mat-toolbar>
     <app-nav-bar></app-nav-bar>
@@ -22,7 +23,7 @@
         (click)="drawer.toggle()"
       >
         <mat-icon aria-label="Side nav toggle icon">
-          {{ drawer.opened ? "close" : "menu" }}
+          {{ drawer.opened ? "menu_open" : "menu" }}
         </mat-icon>
       </button>
       <span>Dashboard</span>
