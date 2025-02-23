@@ -1,7 +1,7 @@
 interface Image {
-  title?: string;
-  description?: string;
-  url?: string;
+  title: string;
+  description: string;
+  url: string;
 }
 
 export interface Product {
@@ -9,6 +9,6 @@ export interface Product {
   name: string;
   price: number;
   image: string;
-  description?: string;
+  description: string;
   images: Image[];
 }
