@@ -6,6 +6,8 @@
       <input matInput formControlName="first_name" />
       @if (userForm.get('first_name')?.errors?.['required']) {
       <mat-error> First name is required </mat-error>
+      }@if (userForm.get('first_name')?.errors?.['whitespace']) {
+      <mat-error>First name cannot be empty or contain only spaces. </mat-error>
       }
     </mat-form-field>
 
@@ -14,6 +16,8 @@
       <input matInput formControlName="last_name" />
       @if (userForm.get('last_name')?.errors?.['required']) {
       <mat-error> Last name is required </mat-error>
+      }@if (userForm.get('last_name')?.errors?.['whitespace']) {
+      <mat-error>Last name cannot be empty or contain only spaces. </mat-error>
       }
     </mat-form-field>
 
@@ -22,9 +26,10 @@
       <input matInput formControlName="email" type="email" />
       @if (userForm.get('email')?.errors?.['required']) {
       <mat-error> Email is required </mat-error>
-      }
-      @if (userForm.get('email')?.errors?.['email']) {
+      } @if (userForm.get('email')?.errors?.['email']) {
       <mat-error> Please enter a valid email </mat-error>
+      } @if (userForm.get('email')?.errors?.['whitespace']) {
+      <mat-error>Email cannot be empty or contain only spaces. </mat-error>
       }
     </mat-form-field>
   </mat-dialog-content>
