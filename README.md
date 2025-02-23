@@ -1,73 +1,61 @@
-# **Online **Library **Admin** Application
+# 📚 Library Admin Dashboard
 
-## **Description**
+A modern admin dashboard for library management built with Angular 19 and Material Design. This application provides a comprehensive interface for managing users, products/books, and persons with advanced features like authentication, real-time updates, and responsive design.
 
-**A** modern admin application **for** an online library built **with**Angular**19**, featuring user management**,** product**/**book management**,** and person management capabilities**.**
+## 🚀 Features
 
-## **Features**
+### Authentication & Security
+- 🔐 Token-based authentication
+- 🛡️ Route guards for protected pages
+- 🔄 Auto-logout on token expiration
+- 📱 Responsive login interface
 
-**-**Authentication system
-**-**Responsive dashboard **with** key statistics
-**-**User management **with**CRUD operations
-**-**Products**/**Books display **with** sorting and pagination
-**-**Persons management **with** search and filtering capabilities
-**-**Material**Design**UI components
-**-**Standalone components architecture
-**-**Signal**-**based state management
+### Dashboard
+- 📊 Real-time statistics
+- 📈 Key metrics visualization
+- 🎯 Quick action buttons
+- 💫 Animated data updates
 
-## **Prerequisites**
+### User Management
+- 👥 CRUD operations for users
+- 📝 Form validation
+- 🔍 Search functionality
+- ⚡ Real-time updates
+- ✅ Confirmation dialogs
 
-**-**Node**.**js**(**v18 or higher**)**
-**-**npm**(**v9 or higher**)**
-**-**Angular**CLI**(v19**)**
+### Products/Books Management
+- 📚 Card-based layout
+- 🔄 Load more functionality
+- ⬆️ Sorting capabilities
+- 🖼️ Image display
+- 📱 Responsive grid
 
-## **Installation**
+### Person Management
+- 👤 Table view with pagination
+- 🔍 Advanced search
+- ⬆️ Column sorting
+- 📱 Mobile-friendly display
 
-**1.**Clone the repository**:**
-**`**`**`**bash git clone https://github.com/yourusername/online-library-admin.git **`**`**`**
+## 🛠️ Technical Stack
 
-**2.**Navigate to the project directory**:**
-**`**`**`**bash cd online-library-admin **`**`**`**
+- **Framework**: Angular 19
+- **UI Library**: Angular Material
+- **State Management**: Signals
+- **Styling**: SCSS
+- **HTTP Client**: Angular HTTP
+- **Routing**: Angular Router
+- **Authentication**: JWT
+- **Code Style**: ESLint & Prettier
 
-**3.**Install dependencies**:**
-**`**`**`**bash npm install **`**`**`**
+## 📋 Prerequisites
 
-**4.**Start the development server**:**
-**`**`**`**bash ng serve **`**`**`**
+- Node.js (v18 or higher)
+- npm (v9 or higher)
+- Angular CLI (v19)
 
-**5.**Open your browser and navigate to**:**
-**`**`**`** http://localhost:4200 **`**`**`**
+## 🚀 Getting Started
 
-## **Project**Structure
-
-**-**`**/src/app/core**`**:**Core**functionality**(services**,** guards**,** interceptors**)**
-**-**`**/src/app/features**`**:**Feature**modules**(auth**,** dashboard**,** users**,** products**,** persons**)**
-**-**`**/src/app/shared**`**:**Shared components**,** models**,** and utilities
-
-## **API**Integration
-
-**The** application integrates **with** the following **APIs**:
-**-**ReqRes**API**for authentication and user management
-**-**Faker**API**for products and persons data
-
-## **Best**Practices
-
-**-**Standalone components architecture
-**-**Signal**-**based state management
-**-**Lazy loading **for** optimized **performance**
-**-**Responsive design
-**-**Clean code principles
-**-**Component**-**based architecture
-**-**Type safety **with**TypeScript
-
-## **Contributing**
-
-**1.**Fork the repository
-**2.**Create your feature branch
-**3.**Commit your changes
-**4.**Push to the branch
-**5.**Create a **new**Pull**Request**
-
-## **License**
-
-**This** project **is** licensed under the **MIT**License**.**
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/library-admin.git
+   cd library-admin
