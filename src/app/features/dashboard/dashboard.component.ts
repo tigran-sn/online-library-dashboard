@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { UserService } from '../../core/services/user.service';
 import { ProductService } from '../../core/services/product.service';
 import { PersonService } from '../../core/services/person.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,6 +15,7 @@ import { PersonService } from '../../core/services/person.service';
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent implements OnInit {
+  private router = inject(Router);
   private userService = inject(UserService);
   private productService = inject(ProductService);
   private personService = inject(PersonService);
@@ -22,7 +24,6 @@ export class DashboardComponent implements OnInit {
   private productsCount = signal<number>(0);
   private personsCount = signal<number>(0);
 
-  // Computed values for the template
   totalUsers = computed(() => this.usersCount());
   totalProducts = computed(() => this.productsCount());
   totalPersons = computed(() => this.personsCount());
@@ -43,5 +44,9 @@ export class DashboardComponent implements OnInit {
     this.personService.getPersons().subscribe((response) => {
       this.personsCount.set(response.total || response.data.length);
     });
+  }
+
+  navigateTo(route: string) {
+    this.router.navigate([route]);
   }
 }

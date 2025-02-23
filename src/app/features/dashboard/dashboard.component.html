@@ -2,7 +2,7 @@
   <h1>Dashboard</h1>
 
   <div class="stats-grid">
-    <mat-card class="stats-card">
+    <mat-card class="stats-card" (click)="navigateTo('/users')">
       <mat-card-content>
         <div class="stat-item">
           <div class="stat-icon">
@@ -17,7 +17,7 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card class="stats-card">
+    <mat-card class="stats-card" (click)="navigateTo('/products')">
       <mat-card-content>
         <div class="stat-item">
           <div class="stat-icon">
@@ -32,7 +32,7 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card class="stats-card">
+    <mat-card class="stats-card" (click)="navigateTo('/persons')">
       <mat-card-content>
         <div class="stat-item">
           <div class="stat-icon">
