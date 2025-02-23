@@ -20,6 +20,7 @@ export const routes: Routes = [
           import('./features/dashboard/dashboard.component').then(
             (m) => m.DashboardComponent
           ),
+        data: { title: 'Dashboard' },
       },
       {
         path: 'users',
@@ -27,6 +28,7 @@ export const routes: Routes = [
           import('./features/users/users.component').then(
             (m) => m.UsersComponent
           ),
+        data: { title: 'Users' },
       },
       {
         path: 'products',
@@ -34,6 +36,7 @@ export const routes: Routes = [
           import('./features/products/products.component').then(
             (m) => m.ProductsComponent
           ),
+        data: { title: 'Products' },
       },
       {
         path: 'persons',
@@ -41,6 +44,7 @@ export const routes: Routes = [
           import('./features/persons/persons.component').then(
             (m) => m.PersonsComponent
           ),
+        data: { title: 'Persons' },
       },
       {
         path: '',

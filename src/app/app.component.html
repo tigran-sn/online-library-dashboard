@@ -26,7 +26,7 @@
           {{ drawer.opened ? "menu_open" : "menu" }}
         </mat-icon>
       </button>
-      <span>Dashboard</span>
+      <span>{{ pageTitle() }}</span>
       <span class="spacer"></span>
       <button mat-icon-button (click)="authService.logout()">
         <mat-icon>logout</mat-icon>
