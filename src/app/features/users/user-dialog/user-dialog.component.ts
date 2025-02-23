@@ -43,8 +43,8 @@ export class UserDialogComponent {
   constructor() {
     this.userForm = this.fb.group({
       id: [this.data.id],
-      first_name: [this.data.first_name, Validators.required],
-      last_name: [this.data.last_name, Validators.required],
+      first_name: [this.data.first_name || '', Validators.required],
+      last_name: [this.data.last_name || '', Validators.required],
       email: [this.data.email || '', [Validators.required, Validators.email]],
     });
   }
