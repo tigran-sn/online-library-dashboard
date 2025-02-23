@@ -17,7 +17,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 import { User } from '../../../shared/models/user.model';
-import { noWhitespaceValidator } from '../../../shared/validators';
 
 @Component({
   selector: 'app-user-dialog',
@@ -44,18 +43,9 @@ export class UserDialogComponent {
   constructor() {
     this.userForm = this.fb.group({
       id: [this.data.id],
-      first_name: [
-        this.data.first_name,
-        [Validators.required, noWhitespaceValidator],
-      ],
-      last_name: [
-        this.data.last_name,
-        [Validators.required, noWhitespaceValidator],
-      ],
-      email: [
-        this.data.email,
-        [Validators.required, Validators.email, noWhitespaceValidator],
-      ],
+      first_name: [this.data.first_name, Validators.required],
+      last_name: [this.data.last_name, Validators.required],
+      email: [this.data.email || '', [Validators.required, Validators.email]],
     });
   }
 
