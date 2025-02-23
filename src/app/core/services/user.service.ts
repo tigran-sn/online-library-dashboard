@@ -57,8 +57,6 @@ export class UserService {
           this.notificationService.success(
             `User ${previousUser.first_name} ${previousUser.last_name} was successfully updated`
           );
-        } else {
-          this.notificationService.success(`User was successfully updated`);
         }
       }),
       catchError((error) => {
@@ -81,8 +79,6 @@ export class UserService {
           this.notificationService.success(
             `User ${deletedUser.first_name} ${deletedUser.last_name} was successfully deleted`
           );
-        } else {
-          this.notificationService.success(`User was successfully deleted`);
         }
       }),
       catchError((error) => {
