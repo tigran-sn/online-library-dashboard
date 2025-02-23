@@ -83,6 +83,7 @@ Content-Type: application/json
  "email": "eve.holt@reqres.in",
  "password": "cityslicka"
 }
+// Note: correct username accepts any password
 
 // Response
 {
