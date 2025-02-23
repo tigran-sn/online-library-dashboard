@@ -10,7 +10,7 @@
     [mode]="'side'"
     opened="true"
   >
-    <mat-toolbar>Library Admin</mat-toolbar>
+    <mat-toolbar>{{ authService.currentUserValue?.email }}</mat-toolbar>
     <app-nav-bar></app-nav-bar>
   </mat-sidenav>
 
