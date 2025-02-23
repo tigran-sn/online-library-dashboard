@@ -59,3 +59,33 @@ A modern admin dashboard for library management built with Angular 19 and Materi
    ```bash
    git clone https://github.com/yourusername/library-admin.git
    cd library-admin
+   
+2. **Install dependencies**
+   ```bash
+   npm install
+3. **Start development server**
+   ```bash
+   ng serve
+4. **Start development server**
+   ```bash
+   ng build --configuration production
+
+## 🔑 API Integration
+
+### Authentication API (ReqRes)
+
+#### Login
+```typescript
+POST https://reqres.in/api/login
+Content-Type: application/json
+
+{
+ "email": "eve.holt@reqres.in",
+ "password": "cityslicka"
+}
+
+// Response
+{
+ "token": [TOKEN]
+}
+
