@@ -6,7 +6,7 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -29,9 +29,12 @@ import { AuthService } from '../../../core/services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  private fb = inject(FormBuilder);
-  private authService = inject(AuthService);
-  private router = inject(Router);
+  private readonly fb = inject(FormBuilder);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+
+  private redirectUrl: string | null = null;
 
   loginForm: FormGroup;
 
@@ -40,13 +43,16 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
+    this.route.queryParams.subscribe((params) => {
+      this.redirectUrl = params['redirectUrl'] || '/dashboard';
+    });
   }
 
   onSubmit(): void {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe({
-        next: () => this.router.navigate(['/dashboard']),
+        next: () => this.router.navigateByUrl(this.redirectUrl!),
         error: (error) => console.error('Login failed:', error),
       });
     }
