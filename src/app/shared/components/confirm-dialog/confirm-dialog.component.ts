@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
@@ -21,8 +21,8 @@ interface DialogData {
   styleUrl: './confirm-dialog.component.scss',
 })
 export class ConfirmDialogComponent {
-  constructor(
-    public dialogRef: MatDialogRef<ConfirmDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
+  dialogRef = inject(MatDialogRef<ConfirmDialogComponent>);
+  data: DialogData =
+    inject<DialogData>(MAT_DIALOG_DATA, { optional: true }) ||
+    ({} as DialogData);
 }

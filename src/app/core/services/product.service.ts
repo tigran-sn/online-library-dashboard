@@ -1,4 +1,4 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable, tap } from 'rxjs';
@@ -11,6 +11,8 @@ import { Product } from '../../shared/models/product.model';
 export class ProductService {
   private readonly API_URL = 'https://fakerapi.it/api/v2/products';
   private readonly ITEMS_PER_PAGE = 10;
+
+  private readonly http = inject(HttpClient);
 
   private allProducts = signal<Product[]>([]);
   private currentPage = signal<number>(1);
@@ -35,8 +37,6 @@ export class ProductService {
     const products = this.products();
     return products.slice(0, this.currentPage() * this.ITEMS_PER_PAGE);
   });
-
-  constructor(private http: HttpClient) {}
 
   getProducts(): Observable<any> {
     return this.http

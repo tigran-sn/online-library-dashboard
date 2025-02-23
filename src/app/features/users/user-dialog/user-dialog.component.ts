@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -32,18 +32,20 @@ import { User } from '../../../shared/models/user.model';
   styleUrl: './user-dialog.component.scss',
 })
 export class UserDialogComponent {
+  private readonly fb = inject(FormBuilder);
+  private readonly dialogRef = inject(MatDialogRef<UserDialogComponent>);
+
+  data: User =
+    inject<User>(MAT_DIALOG_DATA, { optional: true }) || ({} as User);
+
   userForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<UserDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: User
-  ) {
+  constructor() {
     this.userForm = this.fb.group({
-      id: [data.id],
-      first_name: [data.first_name || '', Validators.required],
-      last_name: [data.last_name || '', Validators.required],
-      email: [data.email || '', [Validators.required, Validators.email]],
+      id: [this.data.id],
+      first_name: [this.data.first_name || '', Validators.required],
+      last_name: [this.data.last_name || '', Validators.required],
+      email: [this.data.email || '', [Validators.required, Validators.email]],
     });
   }
 
