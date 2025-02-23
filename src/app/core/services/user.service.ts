@@ -28,9 +28,7 @@ export class UserService {
       tap((newUser) => {
         this.users.update((users) => [...users, newUser]);
         this.notificationService.success(
-          `User ${newUser.first_name ?? ''} ${
-            newUser.last_name ?? ''
-          } was successfully created`
+          `User ${newUser.first_name} ${newUser.last_name} was successfully created`
         );
       }),
       catchError((error) => {
@@ -57,9 +55,7 @@ export class UserService {
 
         if (previousUser) {
           this.notificationService.success(
-            `User ${previousUser.first_name ?? ''} ${
-              previousUser.last_name ?? ''
-            } was successfully updated`
+            `User ${previousUser.first_name} ${previousUser.last_name} was successfully updated`
           );
         } else {
           this.notificationService.success(`User was successfully updated`);
@@ -83,9 +79,7 @@ export class UserService {
 
         if (deletedUser) {
           this.notificationService.success(
-            `User ${deletedUser.first_name ?? ''} ${
-              deletedUser.last_name ?? ''
-            } was successfully deleted`
+            `User ${deletedUser.first_name} ${deletedUser.last_name} was successfully deleted`
           );
         } else {
           this.notificationService.success(`User was successfully deleted`);
