@@ -4,32 +4,24 @@
     <mat-form-field appearance="outline">
       <mat-label>First Name</mat-label>
       <input matInput formControlName="first_name" />
-      @if (userForm.get('first_name')?.errors?.['required']) {
-      <mat-error> First name is required </mat-error>
-      }@if (userForm.get('first_name')?.errors?.['whitespace']) {
-      <mat-error>First name cannot be empty or contain only spaces. </mat-error>
+      @if (getErrorMessage('first_name')) {
+      <mat-error>{{ getErrorMessage("first_name") }}</mat-error>
       }
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Last Name</mat-label>
       <input matInput formControlName="last_name" />
-      @if (userForm.get('last_name')?.errors?.['required']) {
-      <mat-error> Last name is required </mat-error>
-      }@if (userForm.get('last_name')?.errors?.['whitespace']) {
-      <mat-error>Last name cannot be empty or contain only spaces. </mat-error>
+      @if (getErrorMessage('last_name')) {
+      <mat-error>{{ getErrorMessage("last_name") }}</mat-error>
       }
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email" type="email" />
-      @if (userForm.get('email')?.errors?.['required']) {
-      <mat-error> Email is required </mat-error>
-      } @if (userForm.get('email')?.errors?.['email']) {
-      <mat-error> Please enter a valid email </mat-error>
-      } @if (userForm.get('email')?.errors?.['whitespace']) {
-      <mat-error>Email cannot be empty or contain only spaces. </mat-error>
+      @if (getErrorMessage('email')) {
+      <mat-error>{{ getErrorMessage("email") }}</mat-error>
       }
     </mat-form-field>
 
@@ -40,12 +32,12 @@
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button type="button" mat-dialog-close>Cancel</button>
     <button
       mat-raised-button
       color="primary"
       type="submit"
-      [disabled]="userForm.invalid"
+      [disabled]="userForm.invalid || userForm.pristine"
     >
       {{ data.id ? "Update" : "Create" }}
     </button>
