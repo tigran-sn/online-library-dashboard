@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { authGuard } from './core/guards';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -54,14 +55,10 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'not-found',
+    path: '**',
     loadComponent: () =>
       import('./shared/components/not-found/not-found.component').then(
         (m) => m.NotFoundComponent
       ),
-  },
-  {
-    path: '**',
-    redirectTo: 'not-found',
   },
 ];
