@@ -34,5 +34,31 @@ body {
   table {
     min-width: 800px;
     width: 100%;
+
+    .mat-mdc-cell,
+    .mat-mdc-header-cell {
+      padding: 0 16px;
+      word-break: break-word;
+      white-space: normal;
+    }
+
+    .mat-column-email {
+      max-width: 200px;
+    }
+
+    .mat-column-first_name,
+    .mat-column-last_name {
+      max-width: 150px;
+    }
+
+    .mat-column-actions {
+      max-width: 100px;
+      white-space: nowrap;
+    }
+
+    .mat-column-email .cell-content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }
