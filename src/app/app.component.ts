@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import {
   ActivatedRoute,
   NavigationEnd,
@@ -7,6 +7,7 @@ import {
 } from '@angular/router';
 
 import { filter, map } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -42,21 +43,24 @@ export class AppComponent {
   pageTitle = signal('');
 
   constructor() {
-    this.router.events
-      .pipe(
-        filter((event) => event instanceof NavigationEnd),
-        map(() => {
-          let route = this.activatedRoute.firstChild;
-          while (route?.firstChild) {
-            route = route.firstChild;
-          }
-          return route?.snapshot.data['title'] || 'Default Title';
-        })
-      )
-      .subscribe((title) => {
-        this.pageTitle.set(title);
-      });
+    effect(() => {
+      this.pageTitle.set(this.routeTitle());
+    });
   }
+
+  private routeTitle = toSignal(
+    this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map(() => {
+        let route = this.activatedRoute.firstChild;
+        while (route?.firstChild) {
+          route = route.firstChild;
+        }
+        return route?.snapshot.data['title'] || 'Default Title';
+      })
+    ),
+    { initialValue: 'Default Title' }
+  );
 
   logout(): void {
     this.authService.logout();
