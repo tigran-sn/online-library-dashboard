@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
 import { AuthService } from './core/services/auth.service';
 import { LoaderComponent } from './shared/components/loader/loader.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,7 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
     MatIconModule,
     NavBarComponent,
     LoaderComponent,
+    HeaderComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
