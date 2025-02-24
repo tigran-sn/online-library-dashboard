@@ -10,7 +10,11 @@
           </div>
           <div class="stat-details">
             <h3>Total Users</h3>
-            <p class="stat-value">{{ usersCount() }}</p>
+            <p class="stat-value">
+              @if (users() === null) { Loading... } @else {
+              {{ usersCount() }}
+              }
+            </p>
             <p class="stat-description">Active users in the system</p>
           </div>
         </div>
@@ -25,7 +29,11 @@
           </div>
           <div class="stat-details">
             <h3>Total Products / Books</h3>
-            <p class="stat-value">{{ productsCount() }}</p>
+            <p class="stat-value">
+              @if (products() === null) { Loading... } @else {
+              {{ productsCount() }}
+              }
+            </p>
             <p class="stat-description">Books and products available</p>
           </div>
         </div>
@@ -40,7 +48,11 @@
           </div>
           <div class="stat-details">
             <h3>Total Persons</h3>
-            <p class="stat-value">{{ personsCount() }}</p>
+            <p class="stat-value">
+              @if (persons() === null) { Loading... } @else {
+              {{ personsCount() }}
+              }
+            </p>
             <p class="stat-description">Registered individuals</p>
           </div>
         </div>
