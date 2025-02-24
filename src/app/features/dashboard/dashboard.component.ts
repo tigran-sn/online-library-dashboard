@@ -22,13 +22,12 @@ export class DashboardComponent {
   private personService = inject(PersonService);
 
   private users = toSignal(this.userService.getUsers());
-  usersCount = computed(() => this.users()?.total);
-
   private products = toSignal(this.productService.getProducts());
-  productsCount = computed(() => this.products()?.total);
-
   private persons = toSignal(this.personService.getPersons());
-  personsCount = computed(() => this.persons()?.total);
+
+  protected usersCount = computed(() => this.users()?.total);
+  protected productsCount = computed(() => this.products()?.total);
+  protected personsCount = computed(() => this.persons()?.total);
 
   navigateTo(route: string) {
     this.router.navigate([route]);
