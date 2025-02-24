@@ -1,18 +1,18 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatSortModule, Sort } from '@angular/material/sort';
+
 import { PersonService } from '../../core/services/person.service';
 import { Person } from '../../shared/models/person.model';
 
 @Component({
   selector: 'app-persons',
   imports: [
-    CommonModule,
     FormsModule,
     MatTableModule,
     MatFormFieldModule,

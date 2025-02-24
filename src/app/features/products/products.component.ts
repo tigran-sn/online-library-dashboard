@@ -1,5 +1,4 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,12 +6,10 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { ProductService } from '../../core/services/product.service';
 import { ProductCardComponent } from './product-card/product-card.component';
-import { Product } from '../../shared/models/product.model';
 
 @Component({
   selector: 'app-products',
   imports: [
-    CommonModule,
     MatCardModule,
     MatButtonModule,
     MatSelectModule,

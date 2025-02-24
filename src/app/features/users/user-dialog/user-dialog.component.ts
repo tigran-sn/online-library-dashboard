@@ -1,5 +1,4 @@
-import { Component, inject, Inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -22,7 +21,6 @@ import { noWhitespaceValidator } from '../../../shared/validators/no-whitespace.
 @Component({
   selector: 'app-user-dialog',
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     MatDialogModule,
     MatFormFieldModule,

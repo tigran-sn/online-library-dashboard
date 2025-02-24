@@ -1,5 +1,4 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,13 +12,7 @@ import { User } from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-users',
-  imports: [
-    CommonModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-  ],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, MatDialogModule],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
 })

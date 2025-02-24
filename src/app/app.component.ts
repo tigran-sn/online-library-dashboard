@@ -1,5 +1,4 @@
 import { Component, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {
   ActivatedRoute,
   NavigationEnd,
@@ -22,7 +21,6 @@ import { HeaderComponent } from './shared/components/header/header.component';
 @Component({
   selector: 'app-root',
   imports: [
-    CommonModule,
     RouterOutlet,
     MatSidenavModule,
     MatToolbarModule,
