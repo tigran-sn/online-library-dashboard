@@ -54,10 +54,33 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe({
-        next: () => this.router.navigateByUrl(this.redirectUrl!),
+        next: () => {
+          this.notificationService.success('Login successful');
+          this.router.navigateByUrl(this.redirectUrl || '/');
+        },
         error: (error) => {
-          this.notificationService.error(`Error: ${error.error.error}`);
-          console.error('Login failed:', error);
+          let errorMessage = 'Login failed. Please try again.';
+
+          if (error.error?.error) {
+            switch (error.error.error) {
+              case 'user not found':
+                errorMessage = 'Invalid email or password';
+                break;
+              case 'Missing password':
+                errorMessage = 'Password is required';
+                break;
+              case 'Missing email':
+                errorMessage = 'Email is required';
+                break;
+              default:
+                errorMessage = `Authentication failed: ${error.error.error}`;
+            }
+          }
+
+          this.notificationService.error(errorMessage);
+
+          this.loginForm.get('email')?.markAsTouched();
+          this.loginForm.get('password')?.markAsTouched();
         },
       });
     }
