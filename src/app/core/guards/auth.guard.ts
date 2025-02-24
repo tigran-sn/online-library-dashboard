@@ -9,7 +9,7 @@ import {
 import { AuthService } from '../services/auth.service';
 
 export const authGuard: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
+  _: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ) => {
   const authService = inject(AuthService);
