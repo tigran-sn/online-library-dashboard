@@ -46,6 +46,7 @@ export class UserDialogComponent {
       first_name: [this.data.first_name || '', Validators.required],
       last_name: [this.data.last_name || '', Validators.required],
       email: [this.data.email || '', [Validators.required, Validators.email]],
+      avatar: [this.data.avatar || '', []],
     });
   }
 
