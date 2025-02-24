@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,9 +21,9 @@ import { AuthService } from '../../../core/services/auth.service';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  @Input() pageTitle = '';
-  @Input() isOpen = false;
-  @Output() toggleSidenav = new EventEmitter<void>();
+  pageTitle = input('');
+  isOpen = input(false);
+  toggleSidenav = output();
 
   private authService = inject(AuthService);
 

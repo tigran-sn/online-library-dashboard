@@ -6,11 +6,11 @@
     (click)="toggleSidenav.emit()"
   >
     <mat-icon aria-label="Side nav toggle icon">
-      {{ isOpen ? "menu_open" : "menu" }}
+      {{ isOpen() ? "menu_open" : "menu" }}
     </mat-icon>
   </button>
 
-  <span>{{ pageTitle }}</span>
+  <span>{{ pageTitle() }}</span>
 
   <span class="spacer"></span>
 
