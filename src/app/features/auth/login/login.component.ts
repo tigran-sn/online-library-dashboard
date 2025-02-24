@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
 import { AuthService } from '../../../core/services/auth.service';
+import { NotificationService } from '../../../core/services/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -33,6 +34,7 @@ export class LoginComponent {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
+  private readonly notificationService = inject(NotificationService);
 
   private redirectUrl: string | null = null;
 
@@ -53,7 +55,10 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe({
         next: () => this.router.navigateByUrl(this.redirectUrl!),
-        error: (error) => console.error('Login failed:', error),
+        error: (error) => {
+          this.notificationService.error(`Error: ${error.error.error}`);
+          console.error('Login failed:', error);
+        },
       });
     }
   }
