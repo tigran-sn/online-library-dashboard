@@ -35,10 +35,10 @@ import { HeaderComponent } from './shared/components/header/header.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  protected authService = inject(AuthService);
-
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
+
+  protected authService = inject(AuthService);
 
   pageTitle = signal('');
 

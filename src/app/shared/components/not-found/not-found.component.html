@@ -7,9 +7,9 @@
       changed, or is temporarily unavailable.
     </p>
 
-    <button mat-raised-button color="primary" routerLink="/">
+    <button mat-raised-button color="primary" [routerLink]="targetRoute()">
       <mat-icon>home</mat-icon>
-      Go to Dashboard
+      Go to {{ targetText() }}
     </button>
   </div>
 </div>
