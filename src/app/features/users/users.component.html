@@ -15,13 +15,14 @@
           @if (user.avatar) {
           <img
             [src]="user.avatar"
-            [alt]="getInitials(user.first_name, user.last_name)"
             class="user-avatar"
-            (error)="onImageError($event)"
+            appInitialsAvatar
+            [firstName]="user.first_name"
+            [lastName]="user.last_name"
           />
           } @else {
           <div class="avatar-circle">
-            {{ getInitials(user.first_name, user.last_name) }}
+            {{ avatarUtils.getInitials(user.first_name, user.last_name) }}
           </div>
           }
         </td>

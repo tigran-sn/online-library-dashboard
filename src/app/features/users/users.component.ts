@@ -9,16 +9,25 @@ import { UserService } from '../../core/services/user.service';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 import { User } from '../../shared/models/user.model';
+import { InitialsAvatarDirective } from '../../shared/directives/initials-avatar.directive';
+import { AvatarUtilsService } from '../../core/services';
 
 @Component({
   selector: 'app-users',
-  imports: [MatTableModule, MatButtonModule, MatIconModule, MatDialogModule],
+  imports: [
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    InitialsAvatarDirective,
+  ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
 })
 export class UsersComponent implements OnInit {
   private readonly userService = inject(UserService);
   private readonly dialog = inject(MatDialog);
+  protected readonly avatarUtils = inject(AvatarUtilsService);
 
   users = this.userService.users;
   displayedColumns: string[] = [
@@ -68,21 +77,5 @@ export class UsersComponent implements OnInit {
         this.userService.deleteUser(user.id!).subscribe();
       }
     });
-  }
-
-  getInitials(firstName: string, lastName: string): string {
-    return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
-  }
-
-  onImageError(event: Event): void {
-    const target = event.target as HTMLImageElement;
-    const parent = target.parentElement;
-    if (parent) {
-      const initials = target.alt;
-      const div = document.createElement('div');
-      div.className = 'avatar-circle';
-      div.textContent = initials;
-      parent.replaceChild(div, target);
-    }
   }
 }
