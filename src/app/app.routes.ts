@@ -60,5 +60,6 @@ export const routes: Routes = [
       import('./shared/components/not-found/not-found.component').then(
         (m) => m.NotFoundComponent
       ),
+    data: { title: '404: Page Not Found' },
   },
 ];
