@@ -76,4 +76,20 @@ export class UsersComponent implements OnInit {
       }
     });
   }
+
+  getInitials(firstName: string, lastName: string): string {
+    return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
+  }
+
+  onImageError(event: Event): void {
+    const target = event.target as HTMLImageElement;
+    const parent = target.parentElement;
+    if (parent) {
+      const initials = target.alt;
+      const div = document.createElement('div');
+      div.className = 'avatar-circle';
+      div.textContent = initials;
+      parent.replaceChild(div, target);
+    }
+  }
 }
