@@ -1,4 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +10,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 
 @Component({
   selector: 'app-products',
+  standalone: true,
   imports: [
     MatCardModule,
     MatButtonModule,
@@ -18,30 +20,25 @@ import { ProductCardComponent } from './product-card/product-card.component';
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
   private readonly productService = inject(ProductService);
+
+  sortOrder = signal('none');
 
   products = this.productService.products;
   displayedProducts = this.productService.displayedProducts;
-  sortOrder = 'none';
 
-  ngOnInit(): void {
-    this.loadProducts();
-  }
+  private productsData = toSignal(this.productService.getProducts(), {
+    initialValue: [],
+  });
 
-  loadProducts(): void {
-    this.productService.getProducts().subscribe();
-  }
+  canLoadMore = this.productService.canLoadMore;
 
   onSortChange(): void {
-    this.productService.sortProducts(this.sortOrder);
+    this.productService.sortProducts(this.sortOrder());
   }
 
   loadMore(): void {
     this.productService.loadMoreProducts();
-  }
-
-  canLoadMore(): boolean {
-    return this.productService.canLoadMore();
   }
 }

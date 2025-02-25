@@ -15,8 +15,8 @@ export class ProductService {
   private readonly http = inject(HttpClient);
 
   private allProducts = signal<Product[]>([]);
-  private currentPage = signal<number>(1);
-  private sortType = signal<string>('none');
+  private currentPage = signal(1);
+  private sortType = signal('none');
 
   products = computed(() => {
     let sorted = [...this.allProducts()];
@@ -38,6 +38,10 @@ export class ProductService {
     return products.slice(0, this.currentPage() * this.ITEMS_PER_PAGE);
   });
 
+  canLoadMore = computed(() => {
+    return this.displayedProducts().length < this.allProducts().length;
+  });
+
   getProducts(): Observable<any> {
     return this.http
       .get(`${this.API_URL}?_quantity=50`)
@@ -52,9 +56,5 @@ export class ProductService {
     if (this.canLoadMore()) {
       this.currentPage.update((page) => page + 1);
     }
-  }
-
-  canLoadMore(): boolean {
-    return this.displayedProducts().length < this.allProducts().length;
   }
 }
