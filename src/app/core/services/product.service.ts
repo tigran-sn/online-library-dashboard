@@ -34,8 +34,7 @@ export class ProductService {
   });
 
   displayedProducts = computed(() => {
-    const products = this.products();
-    return products.slice(0, this.currentPage() * this.ITEMS_PER_PAGE);
+    return this.products().slice(0, this.currentPage() * this.ITEMS_PER_PAGE);
   });
 
   canLoadMore = computed(() => {

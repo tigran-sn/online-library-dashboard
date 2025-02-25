@@ -25,11 +25,10 @@ export class ProductsComponent {
 
   sortOrder = signal('none');
 
-  products = this.productService.products;
   displayedProducts = this.productService.displayedProducts;
 
-  private productsData = toSignal(this.productService.getProducts(), {
-    initialValue: [],
+  protected products = toSignal(this.productService.getProducts(), {
+    initialValue: null,
   });
 
   canLoadMore = this.productService.canLoadMore;
