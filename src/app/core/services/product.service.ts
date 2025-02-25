@@ -15,8 +15,8 @@ export class ProductService {
   private readonly http = inject(HttpClient);
 
   private allProducts = signal<Product[]>([]);
-  private currentPage = signal(1);
-  private sortType = signal('none');
+  private currentPage = signal<number>(1);
+  private sortType = signal<string>('none');
 
   products = computed(() => {
     let sorted = [...this.allProducts()];
