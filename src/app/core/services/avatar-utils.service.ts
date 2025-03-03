@@ -7,7 +7,7 @@ export class AvatarUtilsService {
   getInitials(
     firstName: string | null | undefined,
     lastName: string | null | undefined,
-    fallbackChar: string = '?'
+    fallbackChar = '?'
   ): string {
     const firstInitial =
       firstName && firstName.length > 0 ? firstName.charAt(0) : '';

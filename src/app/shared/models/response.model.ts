@@ -1,4 +1,4 @@
-export interface Response<T = unknown> {
+export interface IResponse<T = unknown> {
   data: T[];
   page?: number;
   per_page?: number;

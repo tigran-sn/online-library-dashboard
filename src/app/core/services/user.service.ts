@@ -5,6 +5,7 @@ import { catchError, Observable, tap } from 'rxjs';
 
 import { User } from '../../shared/models/user.model';
 import { NotificationService } from './snackbar.service';
+import { IResponse } from '../../shared/models';
 
 @Injectable({
   providedIn: 'root',
@@ -17,10 +18,10 @@ export class UserService {
 
   users = signal<User[]>([]);
 
-  getUsers(): Observable<any> {
+  getUsers(): Observable<IResponse<User>> {
     return this.http
-      .get(`${this.API_URL}?page=1`)
-      .pipe(tap((response: any) => this.users.set(response.data)));
+      .get<IResponse<User>>(`${this.API_URL}?page=1`)
+      .pipe(tap((response: IResponse<User>) => this.users.set(response.data)));
   }
 
   createUser(user: User): Observable<User> {

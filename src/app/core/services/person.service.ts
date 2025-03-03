@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, tap } from 'rxjs';
 
-import { Person } from '../../shared/models/person.model';
+import { Person, IResponse } from '../../shared/models';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +14,11 @@ export class PersonService {
 
   persons = signal<Person[]>([]);
 
-  getPersons(): Observable<any> {
+  getPersons(): Observable<IResponse<Person>> {
     return this.http
-      .get(`${this.API_URL}?_quantity=100`)
-      .pipe(tap((response: any) => this.persons.set(response.data)));
+      .get<IResponse<Person>>(`${this.API_URL}?_quantity=100`)
+      .pipe(
+        tap((response: IResponse<Person>) => this.persons.set(response.data))
+      );
   }
 }

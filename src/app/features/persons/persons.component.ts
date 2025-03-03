@@ -46,7 +46,7 @@ export class PersonsComponent implements OnInit {
   });
 
   displayedPersons = computed(() => {
-    let sorted = [...this.filteredPersons()];
+    const sorted = [...this.filteredPersons()];
 
     if (this.sortColumn()) {
       sorted.sort((a, b) => {

@@ -1,7 +1,7 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 export function noWhitespaceValidator(
-  minLength: number = 0
+  minLength = 0
 ): (control: AbstractControl) => ValidationErrors | null {
   return (control: AbstractControl): ValidationErrors | null => {
     if (control.value === null || control.value === undefined) {

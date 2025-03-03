@@ -48,20 +48,22 @@ export class AuthService {
     this.currentUser.set(null);
   }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.API_URL}/login`, { email, password }).pipe(
-      tap((response: any) => {
-        if (response.token) {
-          const user: User = {
-            email,
-            token: response.token,
-          };
-          localStorage.setItem(this.USER_KEY, JSON.stringify(user));
-          localStorage.setItem(this.TOKEN_KEY, response.token);
-          this.currentUser.set(user);
-        }
-      })
-    );
+  login(email: string, password: string): Observable<Pick<User, 'token'>> {
+    return this.http
+      .post<Pick<User, 'token'>>(`${this.API_URL}/login`, { email, password })
+      .pipe(
+        tap((response: Pick<User, 'token'>) => {
+          if (response.token) {
+            const user: User = {
+              email,
+              token: response.token,
+            };
+            localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+            localStorage.setItem(this.TOKEN_KEY, response.token);
+            this.currentUser.set(user);
+          }
+        })
+      );
   }
 
   logout(): void {

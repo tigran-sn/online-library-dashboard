@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, tap } from 'rxjs';
 
-import { Product } from '../../shared/models/product.model';
+import { Product, IResponse } from '../../shared/models';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class ProductService {
   private sortType = signal<string>('none');
 
   products = computed(() => {
-    let sorted = [...this.allProducts()];
+    const sorted = [...this.allProducts()];
 
     switch (this.sortType()) {
       case 'asc':
@@ -41,10 +41,14 @@ export class ProductService {
     return this.displayedProducts().length < this.allProducts().length;
   });
 
-  getProducts(): Observable<any> {
+  getProducts(): Observable<IResponse<Product>> {
     return this.http
-      .get(`${this.API_URL}?_quantity=50`)
-      .pipe(tap((response: any) => this.allProducts.set(response.data)));
+      .get<IResponse<Product>>(`${this.API_URL}?_quantity=50`)
+      .pipe(
+        tap((response: IResponse<Product>) =>
+          this.allProducts.set(response.data)
+        )
+      );
   }
 
   sortProducts(sortOrder: string): void {
