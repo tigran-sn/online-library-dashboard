@@ -1,1 +1,0 @@
-import{Fa as t,Z as o}from"./chunk-EERKQ2IA.js";var e=class i{isLoading=t(!1);show(){this.isLoading.set(!0)}hide(){this.isLoading.set(!1)}static \u0275fac=function(a){return new(a||i)};static \u0275prov=o({token:i,factory:i.\u0275fac,providedIn:"root"})};export{e as a};
