@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MatTableModule } from '@angular/material/table';
@@ -9,6 +9,7 @@ import { MatSortModule, Sort } from '@angular/material/sort';
 
 import { PersonService } from '../../core/services/person.service';
 import { Person } from '../../shared/models/person.model';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-persons',
@@ -23,7 +24,7 @@ import { Person } from '../../shared/models/person.model';
   templateUrl: './persons.component.html',
   styleUrl: './persons.component.scss',
 })
-export class PersonsComponent implements OnInit {
+export class PersonsComponent {
   private readonly personService = inject(PersonService);
 
   displayedColumns = ['firstname', 'lastname', 'email', 'phone', 'website'];
@@ -60,12 +61,8 @@ export class PersonsComponent implements OnInit {
     return sorted.slice(startIndex, startIndex + this.pageSize());
   });
 
-  ngOnInit(): void {
-    this.loadPersons();
-  }
-
-  loadPersons(): void {
-    this.personService.getPersons().subscribe();
+  constructor() {
+    toSignal(this.personService.getPersons());
   }
 
   applyFilter(event: Event): void {
