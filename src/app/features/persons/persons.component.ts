@@ -1,15 +1,16 @@
 import { Component, inject, signal, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { toSignal } from '@angular/core/rxjs-interop';
+
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatSortModule, Sort } from '@angular/material/sort';
 
-import { PersonService } from '../../core/services/person.service';
-import { Person } from '../../shared/models/person.model';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { PersonService } from '@core/services';
+import { Person } from '@shared/models';
 
 @Component({
   selector: 'app-persons',

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, tap } from 'rxjs';
 
-import { Product, IResponse } from '../../shared/models';
+import { Product, IResponse } from '@shared/models';
 
 @Injectable({
   providedIn: 'root',

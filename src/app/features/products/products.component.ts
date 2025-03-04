@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 
-import { ProductService } from '../../core/services/product.service';
+import { ProductService } from '@core/services';
 import { ProductCardComponent } from './product-card/product-card.component';
 
 @Component({

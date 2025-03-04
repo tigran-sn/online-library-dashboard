@@ -3,9 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { catchError, Observable, tap } from 'rxjs';
 
-import { User } from '../../shared/models/user.model';
+import { User, IResponse } from '@shared/models';
 import { NotificationService } from './snackbar.service';
-import { IResponse } from '../../shared/models';
 
 @Injectable({
   providedIn: 'root',

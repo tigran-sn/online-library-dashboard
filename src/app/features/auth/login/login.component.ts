@@ -12,8 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
-import { AuthService } from '../../../core/services/auth.service';
-import { NotificationService } from '../../../core/services/snackbar.service';
+import { AuthService, NotificationService } from '@core/services';
 
 @Component({
   selector: 'app-login',

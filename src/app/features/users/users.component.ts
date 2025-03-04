@@ -5,12 +5,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
-import { UserService } from '../../core/services/user.service';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
-import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
-import { User } from '../../shared/models/user.model';
-import { InitialsAvatarDirective } from '../../shared/directives/initials-avatar.directive';
-import { AvatarUtilsService } from '../../core/services';
+import { ConfirmDialogComponent } from '@shared/components/confirm-dialog/confirm-dialog.component';
+import { User } from '@shared/models';
+import { InitialsAvatarDirective } from '@shared/directives';
+import { AvatarUtilsService, UserService } from '@core/services';
 
 @Component({
   selector: 'app-users',

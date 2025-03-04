@@ -5,9 +5,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
-import { UserService } from '../../core/services/user.service';
-import { ProductService } from '../../core/services/product.service';
-import { PersonService } from '../../core/services/person.service';
+import { UserService, ProductService, PersonService } from '@core/services';
 
 @Component({
   selector: 'app-dashboard',

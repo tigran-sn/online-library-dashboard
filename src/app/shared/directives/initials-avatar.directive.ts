@@ -6,7 +6,7 @@ import {
   effect,
   inject,
 } from '@angular/core';
-import { AvatarUtilsService } from '../../core/services';
+import { AvatarUtilsService } from '@core/services';
 
 @Directive({
   selector: 'img[appInitialsAvatar]',

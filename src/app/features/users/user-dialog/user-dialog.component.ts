@@ -15,8 +15,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
-import { User } from '../../../shared/models/user.model';
-import { noWhitespaceValidator } from '../../../shared/validators/no-whitespace.validator';
+import { User } from '@shared/models';
+import { noWhitespaceValidator } from '@shared/validators';
 
 @Component({
   selector: 'app-user-dialog',

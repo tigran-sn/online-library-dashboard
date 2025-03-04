@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-import { AuthService } from '../../../core/services';
+import { AuthService } from '@core/services';
 
 @Component({
   selector: 'app-not-found',

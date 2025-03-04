@@ -3,7 +3,7 @@ import { CurrencyPipe } from '@angular/common';
 
 import { MatCardModule } from '@angular/material/card';
 
-import { Product } from '../../../shared/models/product.model';
+import { Product } from '@shared/models';
 
 @Component({
   selector: 'app-product-card',
