@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +10,7 @@ import { ConfirmDialogComponent } from '@shared/components/confirm-dialog/confir
 import { User } from '@shared/models';
 import { InitialsAvatarDirective } from '@shared/directives';
 import { AvatarUtilsService, UserService } from '@core/services';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-users',
@@ -23,7 +24,7 @@ import { AvatarUtilsService, UserService } from '@core/services';
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent {
   private readonly userService = inject(UserService);
   private readonly dialog = inject(MatDialog);
   protected readonly avatarUtils = inject(AvatarUtilsService);
@@ -37,12 +38,8 @@ export class UsersComponent implements OnInit {
     'actions',
   ];
 
-  ngOnInit(): void {
-    this.loadUsers();
-  }
-
-  loadUsers(): void {
-    this.userService.getUsers().subscribe();
+  constructor() {
+    toSignal(this.userService.getUsers());
   }
 
   openUserDialog(user?: User): void {
